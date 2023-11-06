@@ -1,47 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoitest.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 10:40:33 by juitz             #+#    #+#             */
-/*   Updated: 2023/11/06 15:20:48 by juitz            ###   ########.fr       */
+/*   Created: 2023/11/06 13:01:25 by juitz             #+#    #+#             */
+/*   Updated: 2023/11/06 15:29:15 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
-	int	i;
-	int	num;
 	int	sign;
-
-	i = 0;
-	num = 0;
+	int	num;
+	
 	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	
+	while ((*str >= 9 && *str <= 12) || (*str == 32))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign *= -1;
-		i++;
+		str++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9'))
+	while (*str >= '0' && *str <= '9')
 	{
 		num *= 10;
-		num += str[i] - '0';
-		i++;
+		num += *str - '0';
+		str++;
 	}
 	return (num * sign);
 }
-#include <stdio.h>
-int	main (void)
+
+int	main(void)
 {
-    char	str[] = " \t\v\n\r\f123";
-
-    printf("%d", ft_atoi(str));
+	char *str = "1337";
+	int	result1;
+	int	result2;
+	
+	result1 = ft_atoi(str);
+	result2 = atoi(str);
+	printf("%d\n", result1);
+	printf("%d\n", result2);
 }
-
