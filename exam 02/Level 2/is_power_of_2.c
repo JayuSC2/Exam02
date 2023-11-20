@@ -1,27 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:58:40 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/06 21:58:40 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/* Assignment name  : is_power_of_2
+Expected files   : is_power_of_2.c
+Allowed functions: None
+--------------------------------------------------------------------------------
 
-int is_power_of_2(unsigned int n)
+Write a function that determines if a given number is a power of 2.
+
+This function returns 1 if the given number is a power of 2, otherwise it returns 0.
+
+Your function must be declared as follows.
+*/
+
+int	    is_power_of_2(unsigned int n)
 {
-    if (n % 2 == 0)
+    while (n % 2 == 0)
+        n /= 2;
+    if (n == 1)
         return (1);
-    return (0);
+    else
+        return (0);
 }
-
-#include <stdio.h>
-
-int main(void)
+/* #include <stdio.h>
+int main (void)
 {
-    unsigned int n = 46;
-    
-    printf("%d", is_power_of_2(n));
-}
+    int n1 = 1;
+    int n2 = 10;
+    int n3 = 16;
+    int n4 = 4;
+
+    printf("%d\n", is_power_of_2(n1));
+    printf("%d\n", is_power_of_2(n2));
+    printf("%d\n", is_power_of_2(n3));
+    printf("%d\n", is_power_of_2(n4));
+} */
