@@ -1,33 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:42:05 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/06 21:42:05 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
-
-int main(int argc, char **argv)
+int main (int ac, char **av)
 {
+    int tab[256] = {0};
     int i = 0;
     int j;
 
-    if (argc == 3)
+    if (ac == 3)
     {
-        while (argv[1][i])
+        while (av[1][i])
         {
             j = 0;
-            while (argv[2][j])
+            while (av[2][j])
             {
-                if (argv[1][i] == argv[2][j])
+                if (av[1][i] == av[2][j])
                 {
-                    write (1, &argv[1][i], 1);
-                    break;
+                    if (tab[(int)av[1][i]] == 0)
+                    {
+                        tab[(int)av[1][i]] = 1;
+                        write (1, &av[2][j], 1);
+                    }
                 }
                 j++;
             }
